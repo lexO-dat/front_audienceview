@@ -22,6 +22,28 @@ export default function ElevenLabs() {
       console.log("✅ Tool ejecutado por el agente con parámetro:", text);
       return "Funciona!";
     },
+    GoToCart: async () => {
+      console.log("🧭 Solicitando ir al carrito");
+      
+      try {
+        const response = await fetch('/api/gotocart', {
+          method: 'GET'
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          console.log("✅ Navegación al carrito registrada:", data.event);
+          return "Te estoy llevando al carrito ahora.";
+        } else {
+          console.log("❌ Error al registrar navegación:", data.error);
+          return "Hubo un problema al acceder al carrito. Por favor, inténtalo de nuevo.";
+        }
+      } catch (error) {
+        console.error("Error al comunicarse con la API de navegación:", error);
+        return "Hubo un problema al acceder al carrito. Por favor, inténtalo de nuevo.";
+      }
+    },
     AddEventByVoice: async ({ nombre, quantity }: { nombre: string; quantity: number }) => {
       console.log("🛒 Solicitando agregar:", nombre, quantity);
       
