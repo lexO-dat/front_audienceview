@@ -57,7 +57,9 @@ export default function ElevenLabs() {
   return (
     <>
       {/* El widget en sí */}
-      <elevenlabs-convai agent-id="agent_9301k9hrshh2fx2rnhbzwz8xd7k6"></elevenlabs-convai>
+      {React.createElement("elevenlabs-convai", {
+        "agent-id": "agent_9301k9hrshh2fx2rnhbzwz8xd7k6"
+      })}
 
       {/* Carga del script del widget */}
       <script
